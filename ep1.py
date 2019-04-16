@@ -68,9 +68,6 @@ def main():
                     if titulo== 'descricao':
                         print(sala)
                         print()
-                    
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
