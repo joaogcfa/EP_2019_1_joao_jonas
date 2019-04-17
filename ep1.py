@@ -42,10 +42,10 @@ def carregar_cenarios():
 
 
 def main():
-    print("Na hora do sufoco!")
-    print("------------------")
+    print("The Fox Tale")
+    print("------------")
     print()
-    print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
+    print("'Amanhã eu faço', você dizia"
         "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
     print()
     print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
