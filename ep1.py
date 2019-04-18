@@ -45,12 +45,14 @@ def main():
     print("The Fox Tale")
     print("------------")
     print()
-    print("'Amanhã eu faço', você dizia"
-        "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
+    print("'Amanhã eu faço', você dizia. 'Deixa pra outro dia'... e adiou, adiou."
+          " Chegou o dia da entrega do EP e você, raposão aluno insper,"
+          " não fez a entrega POR PREGUIÇA ")
     print()
-    print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
-        "na entrada do Insper, e quer procurar o professor para pedir um "
-        "adiamento do EP (boa sorte...)")
+    print('Mas ainda há esperança. Assuste-se, você tem pouco tempo, mas tem tempo')
+    print()
+    print("Você está na entrada do Insper e terá que fazer as escolhas certas para poder"
+          " conseguir convencer o professor a adiar o temido EP")
     print()
 
     cenario, nome_cenario_atual = carregar_cenarios()
