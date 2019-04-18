@@ -53,11 +53,11 @@ def main():
         "adiamento do EP (boa sorte...)")
     print()
 
-    banana, maca = carregar_cenarios()
+    cenario, nome_cenario_atual = carregar_cenarios()
 
     game_over = False
     while not game_over:
-        cenario_atual = banana[maca]
+        cenario_atual = cenario[nome_cenario_atual]
         
         for titulo,sala in cenario_atual.items():
             if titulo== 'titulo':
@@ -79,7 +79,7 @@ def main():
                 print('{0}: {1}'. format(cenario, descricao))
             escolha = input("o que você quer fazer?")
             if escolha in opcoes:
-                maca = escolha
+                nome_cenario_atual = escolha
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
