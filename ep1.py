@@ -42,6 +42,7 @@ def carregar_cenarios():
 
 
 def main():
+    
     print("The Fox Tale")
     print("------------")
     print()
