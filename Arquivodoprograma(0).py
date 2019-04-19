@@ -4,13 +4,13 @@ def carregar_cenarios():
             "titulo": "Saguão of the old building",
             "descricao": "Voce esta no saguao de entrada do prédio um do insper",
             "opcoes": {
-                "Casa do pão de queijo": "Ia até  casa do pão queijo, talvez comer algo?",
+                "Casa do pão de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
                 "Prédio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
             }
         },
         "Prédio novo": {
             "titulo": "Onde a felicidade começa",
-            "descricao": "Onde todos entram e acham que serão felizes",
+            "descricao": "Saguão do prédio novo:Onde todos entram e acham que serão felizes",
             "opcoes": {
                 "inicio": "Voltar de patinete da yellow para o prédio antigo",
                 "Fab lab": "Pegar elevador para ir ao fab lab",
@@ -19,19 +19,38 @@ def carregar_cenarios():
         },
         "Fab lab": {
             "titulo": "Os QUATRO terrores",
-            "descricao": "Um dos técnicos te fará vencer"
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
+            "descricao": "Um dos técnicos te fará vencer, já os outros...",
+            "opcoes": {"Técnico da cortadora a laser": "Pra que a cortadora a laser serve?", 
+					   'Técnico da fresadora':'O que a fresadora faz? ',
+					   'Técnico de solda':'O que se aprende no job rotation de solda?', 
+					   'Técnico da impressora 3d': 'O que se pode fazer com uma cortadora a laser?', 
+					   'Prédio novo':'Pegar elevador para o térreo do prédio'}
         },
-        "biblioteca": {
-            "titulo": "Caverna da tranquilidade",
-            "descricao": "Voce esta na biblioteca",
+        'Casa do pão de queijo': {
+            "titulo": "O cafezin da sorte",
+            "descricao": "Você está na Casa do pão de queijo?",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "inicio": "Voltar para o saguao de entrada", 
+				'Comprar pão de queijo':'Você tem dinheiro pra isso?'
             }
-        }
-    }
+        },
+		'Segundo andar': {
+			'titulo': 'A hora da verdade',
+			'descrição':'Acho que o professor está aqui',
+			'opções':{'Prédio novo':'pegar elevador para o saguão do prédio de engenharia',
+					  'descer no tobogã':'você consegue fazer isso?',
+					  'sala do professor':'caminhe lentamente até a sala onde ele se encontra',
+					  'Fab lab':'va de elevador ao Fab lab'
+			}
+				},
+		'sala do professor': {
+			'titulo':'O monstro está aqui',
+			'desrição':'faça alguma coisa, ou vai arregar?',
+			'opções':{'segundo andar':'Arregue agora',
+			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
+					  'vá falar com o professor':'agora é a hora da verdade'}
+			   }
+	}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
@@ -53,7 +72,7 @@ def main():
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
-        
+		   
         for titulo,sala in cenario_atual.items():
             if titulo== 'titulo':
                 print(sala)
