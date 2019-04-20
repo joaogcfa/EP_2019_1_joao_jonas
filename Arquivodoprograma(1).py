@@ -4,7 +4,7 @@ def carregar_cenarios():
             "titulo": "Saguão of the old building",
             "descricao": "Voce esta no saguao de entrada do prédio um do insper",
             "opcoes": {
-                "Casa do pão de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
+                "casa do pao de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
                 "Prédio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
             }
         },
@@ -23,15 +23,15 @@ def carregar_cenarios():
             "opcoes": {"Técnico da cortadora a laser": "Pra que a cortadora a laser serve?", 
 					   'Técnico da fresadora':'O que a fresadora faz? ',
 					   'Técnico de solda':'O que se aprende no job rotation de solda?', 
-					   'Técnico da impressora 3d': 'O que se pode fazer com uma cortadora a laser?', 
+					   'Técnico da impressora 3d': 'O que se pode fazer com uma impressora 3d?', 
 					   'Prédio novo':'Pegar elevador para o térreo do prédio'}
         },
-        'Casa do pão de queijo': {
+        'casa do pao de queijo': {
             "titulo": "O cafezin da sorte",
-            "descricao": "Você está na Casa do pão de queijo?",
+            "descricao": "Você está na Casa do pão de queijo",
             "opcoes": {
                 "inicio": "Voltar para o saguao de entrada", 
-				'Comprar pão de queijo':'Você tem dinheiro pra isso?'
+				'comprar pao de queijo':'Você tem dinheiro pra isso?'
             }
         },
 		'Segundo andar': {
@@ -49,39 +49,71 @@ def carregar_cenarios():
 			'opções':{'segundo andar':'Arregue agora',
 			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
 					  'vá falar com o professor':'agora é a hora da verdade'}
-			   }
+			   },
+        "comprar pao de queijo": {
+            "titulo": "Hora da batalha",
+            "descricao": "Quando você foi comprar seu pão de queijo, você irritou a caixa e agora ela está te desafiando para uma batalha 1 contra 1",
+            "opcoes": {
+                "incio": "Você é um medroso que fugirá de suas batalhas e voltará para o saguão de entrada",
+                "Lutar": "Iniciar sua batlha",
+            }
+        },
+        "Lutar": {
+            "titulo": "Sua batalha começou",
+            "descricao": "Você: 100 hit points, 15 pontos de ataque e 10 pontos de defesa"
+            "Caixa: 10 hit points, 5 pontos de ataque e 5 pontos de defesa",
+            "opcoes": {
+                "atacar caixa": "Atacar o seu oponente",
+                "fugir": "última chance de fugir",
+            }
+        },
+        "atacar caixa": {
+            "titulo": "Doce Vitória",
+            "descricao": "Parabéns, você venceu! Como forma de desculpa pelo caixa louco, a casa do Pão de queijo te deu o ataque do café quente, use sabiamente",
+            "opcoes": {
+                "inicio": "Voltar para o saguão de entrada",
+            }
+        },
+        
 	}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
 
 def main():
-    print("Na hora do sufoco!")
-    print("------------------")
+    print("The Fox Tale")
+    print("------------")
     print()
-    print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
-        "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
+    print("'Amanhã eu faço', você dizia. 'Deixa pra outro dia'... e adiou, adiou."
+          " Chegou o dia da entrega do EP e você, raposão aluno insper,"
+          " não fez a entrega POR PREGUIÇA ")
     print()
-    print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
-        "na entrada do Insper, e quer procurar o professor para pedir um "
-        "adiamento do EP (boa sorte...)")
+    print('Mas ainda há esperança. Assuste-se, você tem pouco tempo, mas tem tempo')
     print()
+    print("Você está na entrada do Insper e terá que fazer as escolhas certas para poder"
+          " conseguir convencer o professor a adiar o temido EP")
+    print()
+    avatar=input("Qual é seu nome raposão?")
 
     cenarios, nome_cenario_atual = carregar_cenarios()
-
+    itens=[]
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
-		   
+        
+        if nome_cenario_atual== "atacar caixa":
+            itens.append("ataque do café quente")
         for titulo,sala in cenario_atual.items():
             if titulo== 'titulo':
+                print()
                 print(sala)
                 print('-'*len(sala))
                 print()
-                for titulo,sala in cenario_atual.items():
-                    if titulo== 'descricao':
-                        print(sala)
-                        print()
+                print("você tem esses itens:",itens)
+                for descricao,texto in cenario_atual.items():
+                    if descricao== 'descricao':
+                        print(texto)
+                        print()                                
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
@@ -95,8 +127,9 @@ def main():
             if escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
-                print("Sua indecisão foi sua ruína!")
-                game_over = True
+                print("Sua indecisão te levou a ruína")
+                game_over=True
+                
 
     print("Você morreu!")
 
