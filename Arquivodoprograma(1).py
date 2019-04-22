@@ -1,4 +1,5 @@
 def carregar_cenarios():
+    avatar=input("Qual é seu nome raposão?")
     cenarios = {
         "inicio": {
             "titulo": "Saguão of the old building",
@@ -46,9 +47,9 @@ def carregar_cenarios():
 				},
 		'sala do professor': {
 			'titulo':'O monstro está aqui',
-			'descricao':'faça alguma coisa, ou vai arregar?',
+			'descricao':'Vai fazer alguma coisa, ou vai arregar?',
 			'opcoes':{'segundo andar':'Arregue agora',
-			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
+			          'assustar o professor':'faça uma bricadeirinha sadia com ele',
 					  'va falar com o professor':'agora é a hora da verdade'}
 			   },
         "comprar pao de queijo": {
@@ -61,8 +62,8 @@ def carregar_cenarios():
         },
         "lutar": {
             "titulo": "Sua batalha começou",
-            "descricao": "Você: 100 hit points, 15 pontos de ataque e 10 pontos de defesa\n"
-            "Caixa: 10 hit points, 5 pontos de ataque e 5 pontos de defesa",
+            "descricao": "{0}: 100 hit points, 15 pontos de ataque e 10 pontos de defesa\n"
+            "Caixa: 10 hit points, 5 pontos de ataque e 5 pontos de defesa".format(avatar),
             "opcoes": {
                 "atacar caixa": "atacar o seu oponente",
                 "fugir": "última chance de fugir",
@@ -86,9 +87,9 @@ def carregar_cenarios():
 				},
         'tecnico da fresadora': {
             "titulo": "O técnico assassino",
-            "descricao": "você escolheu pobreamente, o que te fez cair em ruina",
+            "descricao": "Você escolheu pobreamente, o que te fez cair em ruina",
             "opcoes": {
-                "acabaram as opções":"não há nada para se fazer"
+                "acabaram as opções":"Não há nada para se fazer"
             }
         },
         'tecnico da solda': {
@@ -115,8 +116,8 @@ def carregar_cenarios():
         },
         'lutar com o tecnico': {
             "titulo": "A batalha",
-            "descricao": "Você: 100 hit points, 15 pontos de ataque e 10 pontos de defesa\n"
-            "Caixa: 1000 hit points, 25 pontos de ataque e 25 pontos de defesa",
+            "descricao": "{0}: 100 hit points, 15 pontos de ataque e 10 pontos de defesa\n"
+            "Técnico: 1000 hit points, 25 pontos de ataque e 25 pontos de defesa".format(avatar),
             "opcoes": {
                 "predio novo":"você ficou com medo do que ele poderia fazer",
                 "atacar o tecnico":"desafiar o tecnico",
@@ -137,13 +138,12 @@ def carregar_cenarios():
                 "predio novo":"Voltar para o hall do prédio novo",
             }
         },
-        'assuste o professor': {
-			'titulo':'O monstro está aqui',
-			'descricao':'faça alguma coisa, ou vai arregar?',
-			'opcoes':{'segundo andar':'Arregue agora',
-			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
-					  'va falar com o professor':'agora é a hora da verdade'}
-			   },
+        'assustar o professor': {
+			'titulo':'O ataque assassino',
+			'descricao':'Voce matou o professor',
+			'opcoes':{'Você matou o professor':'Não há nada a se fazer',
+			         }
+			   }
 	}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
@@ -161,12 +161,13 @@ def main():
     print("Você está na entrada do Insper e terá que fazer as escolhas certas para poder"
           " conseguir convencer o professor a adiar o temido EP")
     print()
-    avatar=input("Qual é seu nome raposão?")
+    
 
     cenarios, nome_cenario_atual = carregar_cenarios()
     itens=['Você não tem itens']
     game_over = False
-    while not game_over:
+    game_win = False
+    while not game_over and not game_win:
         cenario_atual = cenarios[nome_cenario_atual]
 		
 		
@@ -204,9 +205,14 @@ def main():
                 itens.append('rabo da raposa louca')
             else:
                 print()
-                print('você não tem o ataque do café quente seu bobo')
+                print('Você não tem o ataque do café quente seu bobo')
                 game_over=True
                 break
+        if nome_cenario_atual == "assustar o professor":
+            print()
+            print('Parabéns, você ganhou o jogo, já que o professor morreu de ataque cardíaco e não tem mais entrega de EP, mas você foi preso...')
+            game_win=True
+            break
 
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
@@ -250,7 +256,10 @@ def main():
                 nome_cenario_atual = escolha
                 
 
-    print("Você morreu!")
+    if game_over==True:
+        print("Você morreu!")
+    elif game_win==True:
+        print("Você venceu!")
 
 
 # Programa principal.
