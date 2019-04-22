@@ -237,7 +237,7 @@ def main():
                 nome_cenario_atual = escolha
             elif escolha in opcoes:
                 nome_cenario_atual = escolha
-            else:
+            while escolha not in opcoes:
                 print("essa opção não existe, tente novamente")
                 escolha=input("o que você quer fazer?")
                 nome_cenario_atual = escolha
