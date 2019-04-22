@@ -143,7 +143,15 @@ def carregar_cenarios():
 			'descricao':'Voce matou o professor',
 			'opcoes':{'Você matou o professor':'Não há nada a se fazer',
 			         }
-			   }
+			   },
+		'va falar com o professor':{
+			'titulo':'A fuga do professor',
+			'descricao':'O professor não gostou do que você falou, e então ele saiu correndo para longe de você, você precisa encontrá-lo no saguão do prédio novo antes que seja tarde demais, e o único modo de alcançá-lo é utilizando algum transporte rápido',
+			'opcoes':{
+					'toboga':'utilizar o tobogã para chegar a tempo no professor',
+					'usar elevador':'utilizar elevador para chegar ao saguão'
+				}
+			}
 	}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
@@ -269,6 +277,13 @@ def main():
             #ir para cenário    
             elif escolha in opcoes:
                 nome_cenario_atual = escolha
+            if escolha == 'toboga':
+                if itens[0]=='rabo da raposa louca':
+                   print('Você conseguiu chegar a tempo de falar com o Raul novamente, e assim conseguiu adiar a data do EP, devido a ele te achar muito rápido')
+                   game_win=True
+                else:
+                   print('você não possui o rabo da raposa louca para descer o tobogã')
+                   game_over=True
             while escolha not in opcoes:
                 print("essa opção não existe, tente novamente")
                 escolha=input("o que você quer fazer?")
