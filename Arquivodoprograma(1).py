@@ -5,18 +5,14 @@ def carregar_cenarios():
             "descricao": "Voce esta no saguao de entrada do prédio um do insper",
             "opcoes": {
                 "casa do pao de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
-<<<<<<< HEAD
+
                 "predio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
-				'O grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
-=======
-                "Prédio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
 				'o grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
->>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
             }
         },
         "predio novo": {
             "titulo": "Onde a felicidade começa",
-            "descricao": "Saguão do prédio novo:Onde todos entram e acham que serão felizes",
+            "descricao": "Saguão do prédio novo: Onde todos entram e acham que serão felizes",
             "opcoes": {
                 "inicio": "Voltar de patinete da yellow para o prédio antigo",
                 "fab lab": "Pegar elevador para ir ao fab lab",
@@ -42,13 +38,8 @@ def carregar_cenarios():
         },
 		'segundo andar': {
 			'titulo': 'A hora da verdade',
-<<<<<<< HEAD
 			'descrição':'Acho que o professor está aqui',
 			'opções':{'predio novo':'pegar elevador para o saguão do prédio de engenharia',
-=======
-			'descricao':'Acho que o professor está aqui',
-			'opções':{'Prédio novo':'pegar elevador para o saguão do prédio de engenharia',
->>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
 					  'descer no tobogã':'você consegue fazer isso?',
 					  'sala do professor':'caminhe lentamente até a sala onde ele se encontra',
 					  'fab lab':'va de elevador ao Fab lab'
@@ -108,7 +99,7 @@ def carregar_cenarios():
                 "acabaram as opções":"não há nada para se fazer"
             }
         },
-        'tecnico da cortadora laser': {
+        'tecnico da cortadora a laser': {
             "titulo": "",
             "descricao": "você escolheu pobreamente, o que te fez cair em ruina",
             "opcoes": {
@@ -138,6 +129,13 @@ def carregar_cenarios():
             "descricao": "você escolheu pobreamente, o que te fez cair em ruina",
             "opcoes": {
                 "acabaram as opções":"não há nada para se fazer"
+            }
+        },
+        'ataque do cafe quente': {
+            "titulo": "Doce vitória",
+            "descricao": "Você ganhou do tecnico e agora como recompensa você ganhou o belissimo rabo da raposa, vindo diretamente da impressora 3d",
+            "opcoes": {
+                "predio novo":"Voltar para o hall do prédio novo",
             }
         },    
 	}
@@ -169,7 +167,6 @@ def main():
         if nome_cenario_atual == "atacar caixa":
             print()
             itens.append("ataque do café quente")
-<<<<<<< HEAD
         if nome_cenario_atual == "tecnico da fresadora":
             print()
             print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a fresadora")
@@ -184,7 +181,7 @@ def main():
             break
         if nome_cenario_atual == "tecnico da cortadora a laser":
             print()
-            print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a cortadora laiser")
+            print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a cortadora laser")
             print()
             game_over = True
             break
@@ -194,7 +191,7 @@ def main():
             print()
             game_over = True
             break
-        if nome_cenario_atual == "ataque do cafe quente":
+        if nome_cenario_atual == "ataque do cafe quente" and itens[0]=='ataque do café quente':
             del itens[0]
             itens.append('rabo da raposa louca')
 #parte do teleporte, dá uma verificada se vai, também adicionei o cenário do elevador			
@@ -205,16 +202,15 @@ def main():
                   if nome_cenario_atual != "inicio" or "Prédio novo" or "Fab lab" or 'casa do pao de queijo' or 'Segundo andar' or 'sala do professor': 
                       print('Você se teleportou para um lugar que não existe nessa dimensão e se perdeu no espaço tempo, parabéns pela burrice!!!') 
                       game_over=True
-=======
->>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
-					   
+
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
                 print()
                 print(sala)
                 print('-'*len(sala))
                 print()
-                print("voce tem esses itens:", end = '')
+                print("Você tem esses itens: ", end = '')
+                print()
                 for i in itens:
                     print(i, end = '')
                 print()
