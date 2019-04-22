@@ -66,7 +66,7 @@ def carregar_cenarios():
             "Caixa: 10 hit points, 5 pontos de ataque e 5 pontos de defesa".format(avatar),
             "opcoes": {
                 "atacar caixa": "atacar o seu oponente",
-                "fugir": "última chance de fugir",
+                "inicio": "última chance de fugir",
             }
         },
         "atacar caixa": {
@@ -233,7 +233,6 @@ def main():
             game_win=True
             break
 
-
         #Apresentação do cenário
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
@@ -267,23 +266,23 @@ def main():
             #feature transporte
             if escolha == 'responder a pergunta':
                nome_cenario_atual=input('Escolha qualquer lugar do mundo ')
-               if nome_cenario_atual in cenarios:
-                  nome_cenario_atual=nome_cenario_atual
+               if escolha in cenarios:
+                  nome_cenario_atual=escolha
                else:
-                print("essa opção não existe, tente novamente")
-                escolha=input("o que você quer fazer?")
-                nome_cenario_atual = escolha
+                   print('VOCE ERROU PARA ONDE QUERER IR E MORREU')
+                   game_over=True
+                   
+            if escolha == 'toboga':
+                if itens[0]=='rabo da raposa louca':
+                    print('Você conseguiu chegar a tempo de falar com o Raul novamente, e assim conseguiu adiar a data do EP, devido a ele te achar muito rápido')
+                    game_win=True
+                else:
+                    print('você não possui o rabo da raposa louca para descer o tobogã')
+                    game_over=True
                 
             #ir para cenário    
             elif escolha in opcoes:
                 nome_cenario_atual = escolha
-            if escolha == 'toboga':
-                if itens[0]=='rabo da raposa louca':
-                   print('Você conseguiu chegar a tempo de falar com o Raul novamente, e assim conseguiu adiar a data do EP, devido a ele te achar muito rápido')
-                   game_win=True
-                else:
-                   print('você não possui o rabo da raposa louca para descer o tobogã')
-                   game_over=True
             while escolha not in opcoes:
                 print("essa opção não existe, tente novamente")
                 escolha=input("o que você quer fazer?")
