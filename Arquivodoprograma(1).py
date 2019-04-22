@@ -176,12 +176,15 @@ def main():
             print()
             game_over = True
             break
-        if nome_cenario_atual == "tecnico da cortadora a laser":
+        if nome_cenario_atual == "atacar o tecnico":
             print()
-            print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a cortadora laiser")
+            print("Você claramente não tinha chance e mesmo assim atacou... bem, você perdeu")
             print()
             game_over = True
-            break        
+            break
+        if nome_cenario_atual == "ataque do cafe quente":
+            del itens[0]
+            itens.append('rabo da raposa louca')
 #parte do teleporte, dá uma verificada se vai, também adicionei o cenário do elevador			
         elif cenario_atual == 'O grande elevador':
             for opção in cenario_atual['opcoes']:
