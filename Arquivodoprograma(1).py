@@ -2,12 +2,11 @@ def carregar_cenarios():
     cenarios = {
         "inicio": {
             "titulo": "Saguão of the old building",
-            "descricao": "Voce esta no saguao de entrada do prédio um do insper",
+            "descricao": "Você está no saguao de entrada do prédio velho",
             "opcoes": {
                 "casa do pao de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
-
                 "predio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
-				'o grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
+				'o grande elevador': 'Sempre demorado, porém sempre nos leva instantaneamente'
             }
         },
         "predio novo": {
@@ -16,7 +15,7 @@ def carregar_cenarios():
             "opcoes": {
                 "inicio": "Voltar de patinete da yellow para o prédio antigo",
                 "fab lab": "Pegar elevador para ir ao fab lab",
-				'segundo andar':'subir de escada para o segundo andar'
+				'segundo andar':'Subir de escada para o segundo andar'
             }
         },
         "fab lab": {
@@ -39,8 +38,8 @@ def carregar_cenarios():
 		'segundo andar': {
 			'titulo': 'A hora da verdade',
 			'descrição':'Acho que o professor está aqui',
-			'opções':{'predio novo':'pegar elevador para o saguão do prédio de engenharia',
-					  'descer no tobogã':'você consegue fazer isso?',
+			'opcoes':{'predio novo':'Pegar o elevador para o saguão do prédio de engenharia',
+					  'descer no tobogã':'Você consegue fazer isso?',
 					  'sala do professor':'caminhe lentamente até a sala onde ele se encontra',
 					  'fab lab':'va de elevador ao Fab lab'
 			}
@@ -48,7 +47,7 @@ def carregar_cenarios():
 		'sala do professor': {
 			'titulo':'O monstro está aqui',
 			'descricao':'faça alguma coisa, ou vai arregar?',
-			'opções':{'segundo andar':'Arregue agora',
+			'opcoes':{'segundo andar':'Arregue agora',
 			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
 					  'va falar com o professor':'agora é a hora da verdade'}
 			   },
@@ -158,7 +157,7 @@ def main():
     avatar=input("Qual é seu nome raposão?")
 
     cenarios, nome_cenario_atual = carregar_cenarios()
-    itens=[]
+    itens=['Você não tem itens']
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
@@ -166,6 +165,7 @@ def main():
 		
         if nome_cenario_atual == "atacar caixa":
             print()
+            del itens[0]
             itens.append("ataque do café quente")
         if nome_cenario_atual == "tecnico da fresadora":
             print()
@@ -191,17 +191,15 @@ def main():
             print()
             game_over = True
             break
-        if nome_cenario_atual == "ataque do cafe quente" and itens[0]=='ataque do café quente':
-            del itens[0]
-            itens.append('rabo da raposa louca')
-#parte do teleporte, dá uma verificada se vai, também adicionei o cenário do elevador			
-        elif cenario_atual == 'O grande elevador':
-            for opção in cenario_atual['opcoes']:
-               if opção == 'responder a pergunta':
-                  nome_cenario_atual=input('fale o lugar pra onde quer ir')
-                  if nome_cenario_atual != "inicio" or "Prédio novo" or "Fab lab" or 'casa do pao de queijo' or 'Segundo andar' or 'sala do professor': 
-                      print('Você se teleportou para um lugar que não existe nessa dimensão e se perdeu no espaço tempo, parabéns pela burrice!!!') 
-                      game_over=True
+        if nome_cenario_atual == "ataque do cafe quente":
+            if itens[0]=='ataque do café quente':
+                del itens[0]
+                itens.append('rabo da raposa louca')
+            else:
+                print()
+                print('você não tem o ataque do café quente seu bobo')
+                game_over=True
+                break
 
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
@@ -213,11 +211,12 @@ def main():
                 print()
                 for i in itens:
                     print(i, end = '')
-                print()
+                    print()
+                    print()
                 for descricao,texto in cenario_atual.items():
                     if descricao == 'descricao':
                         print(texto)
-                        print()                                
+                print()                                
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
@@ -233,13 +232,15 @@ def main():
                if nome_cenario_atual in cenarios:
                   nome_cenario_atual=nome_cenario_atual
                else:
-                  print("SE FERRO, isso que você escreveu não existe nesse mundo, você se perdeu para sempre")
-                  game_over=True
+                print("essa opção não existe, tente novamente")
+                escolha=input("o que você quer fazer?")
+                nome_cenario_atual = escolha
             elif escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
-                print("SE FERRO, esse lugar não existe nesse mundo, você se perdeu para sempre")
-                game_over=True
+                print("essa opção não existe, tente novamente")
+                escolha=input("o que você quer fazer?")
+                nome_cenario_atual = escolha
                 
 
     print("Você morreu!")
