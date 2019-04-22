@@ -1,3 +1,4 @@
+from time import sleep as sl
 def carregar_cenarios():
     avatar=input("Qual é seu nome raposão?")
     cenarios = {
@@ -160,12 +161,15 @@ def main():
     print("The Fox Tale")
     print("------------")
     print()
+    sl(1)
     print("'Amanhã eu faço', você dizia. 'Deixa pra outro dia'... e adiou, adiou."
           " Chegou o dia da entrega do EP e você, raposão aluno insper,"
           " não fez a entrega POR PREGUIÇA ")
+    sl(3)
     print()
     print('Mas ainda há esperança. Assuste-se, você tem pouco tempo, mas tem tempo')
     print()
+    sl(2)
     print("Você está na entrada do Insper e terá que fazer as escolhas certas para poder"
           " conseguir convencer o professor a adiar o temido EP")
     print()
