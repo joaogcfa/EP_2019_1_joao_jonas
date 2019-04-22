@@ -67,7 +67,7 @@ def carregar_cenarios():
             "Caixa: 10 hit points, 5 pontos de ataque e 5 pontos de defesa".format(avatar),
             "opcoes": {
                 "atacar caixa": "atacar o seu oponente",
-                "fugir": "última chance de fugir",
+                "inicio": "última chance de fugir",
             }
         },
         "atacar caixa": {
@@ -174,19 +174,24 @@ def main():
           " conseguir convencer o professor a adiar o temido EP")
     print()
     
-
+#criar variáveis
     cenarios, nome_cenario_atual = carregar_cenarios()
     itens=['Você não tem itens']
     game_over = False
     game_win = False
+    
+# o jogo em si
     while not game_over and not game_win:
         cenario_atual = cenarios[nome_cenario_atual]
 		
-		
+		# feature batalha na casa de pao de queijo
         if nome_cenario_atual == "atacar caixa":
             print()
             del itens[0]
+            #feature itens
             itens.append("ataque do café quente")
+            
+        # perdendo no fab lab    
         if nome_cenario_atual == "tecnico da fresadora":
             print()
             print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a fresadora")
@@ -205,12 +210,16 @@ def main():
             print()
             game_over = True
             break
+        
+        #batalha com tecnico
         if nome_cenario_atual == "atacar o tecnico":
             print()
             print("Você claramente não tinha chance e mesmo assim atacou... bem, você perdeu")
             print()
             game_over = True
             break
+        
+        #ganhando do tecnico
         if nome_cenario_atual == "ataque do cafe quente":
             if itens[0]=='ataque do café quente':
                 del itens[0]
@@ -220,12 +229,15 @@ def main():
                 print('Você não tem o ataque do café quente seu bobo')
                 game_over=True
                 break
+            
+        #ganhar o jogo assustando o professor
         if nome_cenario_atual == "assustar o professor":
             print()
             print('Parabéns, você ganhou o jogo, já que o professor morreu de ataque cardíaco e não tem mais entrega de EP, mas você foi preso...')
             game_win=True
             break
 
+        #Apresentação do cenário
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
                 print()
@@ -243,6 +255,8 @@ def main():
                         print(texto)
                 print()                                
 
+
+        #Interação com o usuário
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
@@ -252,29 +266,33 @@ def main():
             for cenario, descricao in opcoes.items():
                 print('{0}: {1}'. format(cenario, descricao))
             escolha = input("o que você quer fazer?")
+            
+            #feature transporte
             if escolha == 'responder a pergunta':
                nome_cenario_atual=input('Escolha qualquer lugar do mundo ')
-               if nome_cenario_atual in cenarios:
-                  nome_cenario_atual=nome_cenario_atual
+               if escolha in cenarios:
+                  nome_cenario_atual=escolha
                else:
-                print("essa opção não existe, tente novamente")
-                escolha=input("o que você quer fazer?")
-                nome_cenario_atual = escolha
-            elif escolha in opcoes:
-                nome_cenario_atual = escolha
+                   print('VOCE ERROU PARA ONDE QUERER IR E MORREU')
+                   game_over=True
+                   
             if escolha == 'toboga':
                 if itens[0]=='rabo da raposa louca':
-                   print('Você conseguiu chegar a tempo de falar com o Raul novamente, e assim conseguiu adiar a data do EP, devido a ele te achar muito rápido')
-                   game_win=True
+                    print('Você conseguiu chegar a tempo de falar com o Raul novamente, e assim conseguiu adiar a data do EP, devido a ele te achar muito rápido')
+                    game_win=True
                 else:
-                   print('você não possui o rabo da raposa louca para descer o tobogã')
-                   game_over=True
+                    print('você não possui o rabo da raposa louca para descer o tobogã')
+                    game_over=True
+                
+            #ir para cenário    
+            elif escolha in opcoes:
+                nome_cenario_atual = escolha
             while escolha not in opcoes:
                 print("essa opção não existe, tente novamente")
                 escolha=input("o que você quer fazer?")
                 nome_cenario_atual = escolha
                 
-
+    #ganhando ou perdendo o jogo            
     if game_over==True:
         print("Você morreu!")
     elif game_win==True:
