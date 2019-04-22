@@ -6,7 +6,7 @@ def carregar_cenarios():
             "opcoes": {
                 "casa do pao de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
                 "Prédio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
-				'O grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
+				'o grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
             }
         },
         "Prédio novo": {
@@ -35,9 +35,9 @@ def carregar_cenarios():
 				'comprar pao de queijo':'Você tem dinheiro pra isso?'
             }
         },
-		'Segundo andar': {
+		'segundo andar': {
 			'titulo': 'A hora da verdade',
-			'descrição':'Acho que o professor está aqui',
+			'descricao':'Acho que o professor está aqui',
 			'opções':{'Prédio novo':'pegar elevador para o saguão do prédio de engenharia',
 					  'descer no tobogã':'você consegue fazer isso?',
 					  'sala do professor':'caminhe lentamente até a sala onde ele se encontra',
@@ -46,7 +46,7 @@ def carregar_cenarios():
 				},
 		'sala do professor': {
 			'titulo':'O monstro está aqui',
-			'desrição':'faça alguma coisa, ou vai arregar?',
+			'descricao':'faça alguma coisa, ou vai arregar?',
 			'opções':{'segundo andar':'Arregue agora',
 			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
 					  'vá falar com o professor':'agora é a hora da verdade'}
@@ -70,17 +70,18 @@ def carregar_cenarios():
         },
         "atacar caixa": {
             "titulo": "Doce Vitória",
+			'descricão': 'Você saiu na porrada com a atendente e não saiu no prejú',
             "descricao": "Parabéns, você venceu! Como forma de desculpa pelo caixa louco, a casa do Pão de queijo te deu o ataque do café quente, use sabiamente",
             "opcoes": {
                 "inicio": "Voltar para o saguão de entrada",
             }
         },
-		'O grande elevador':{
+		'o grande elevador':{
 			'titulo': 'Vai num flash',
-			'Descrição': 'O jeito mais rápido de se percorrer o espaço tempo, de forma quase segura',
+			'descricao': 'O jeito mais rápido de se percorrer o espaço tempo, de forma quase segura',
 			'opcoes':{
 				'responder a pergunta':'teleporte-se para onde quiser',
-				'voltar ao saguão': 'Estas a perder uma grande oportunidade'	
+				'inicio': 'Estas a perder uma grande oportunidade'	
 					}
 				}
 	}
@@ -110,17 +111,8 @@ def main():
 		
 		
         if nome_cenario_atual == "atacar caixa":
-            print('Você saiu na porrada com a atendente e não saiu no prejú')
+            print()
             itens.append("ataque do café quente")
-			
-#parte do teleporte, dá uma verificada se vai, também adicionei o cenário do elevador			
-        elif cenario_atual == 'O grande elevador':
-            for opção in cenario_atual['opcoes']:
-               if opção == 'responder a pergunta':
-                  nome_cenario_atual=input('fale o lugar pra onde quer ir')
-                  if nome_cenario_atual != "inicio" or "Prédio novo" or "Fab lab" or 'casa do pao de queijo' or 'Segundo andar' or 'sala do professor': 
-                      print('Você se teleportou para um lugar que não existe nessa dimensão e se perdeu no espaço tempo, parabéns pela burrice!!!') 
-                      game_over=True
 					   
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
@@ -143,10 +135,17 @@ def main():
             for cenario, descricao in opcoes.items():
                 print('{0}: {1}'. format(cenario, descricao))
             escolha = input("o que você quer fazer?")
-            if escolha in opcoes:
+            if escolha == 'responder a pergunta':
+               nome_cenario_atual=input('Escolha qualquer lugar do mundo ')
+               if nome_cenario_atual in cenarios:
+                  nome_cenario_atual=nome_cenario_atual
+               else:
+                  print("SE FERRO, isso que você escreveu não existe nesse mundo, você se perdeu para sempre")
+                  game_over=True
+            elif escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
-                print("Demoro, se FERRO, não foi dessa vez irmão")
+                print("SE FERRO, esse lugar não existe nesse mundo, você se perdeu para sempre")
                 game_over=True
                 
 
