@@ -5,8 +5,13 @@ def carregar_cenarios():
             "descricao": "Voce esta no saguao de entrada do prédio um do insper",
             "opcoes": {
                 "casa do pao de queijo": "Ir até  casa do pão queijo, talvez comer algo?",
+<<<<<<< HEAD
                 "predio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
 				'O grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
+=======
+                "Prédio novo": "Ir de patinete da grin para rumo ao prédio de engenharia",
+				'o grande elevador': 'sempre demorado, porém sempre nos leva instantaneamente'
+>>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
             }
         },
         "predio novo": {
@@ -37,8 +42,13 @@ def carregar_cenarios():
         },
 		'segundo andar': {
 			'titulo': 'A hora da verdade',
+<<<<<<< HEAD
 			'descrição':'Acho que o professor está aqui',
 			'opções':{'predio novo':'pegar elevador para o saguão do prédio de engenharia',
+=======
+			'descricao':'Acho que o professor está aqui',
+			'opções':{'Prédio novo':'pegar elevador para o saguão do prédio de engenharia',
+>>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
 					  'descer no tobogã':'você consegue fazer isso?',
 					  'sala do professor':'caminhe lentamente até a sala onde ele se encontra',
 					  'fab lab':'va de elevador ao Fab lab'
@@ -46,7 +56,7 @@ def carregar_cenarios():
 				},
 		'sala do professor': {
 			'titulo':'O monstro está aqui',
-			'desrição':'faça alguma coisa, ou vai arregar?',
+			'descricao':'faça alguma coisa, ou vai arregar?',
 			'opções':{'segundo andar':'Arregue agora',
 			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
 					  'va falar com o professor':'agora é a hora da verdade'}
@@ -70,17 +80,18 @@ def carregar_cenarios():
         },
         "atacar caixa": {
             "titulo": "Doce Vitória",
+			'descricão': 'Você saiu na porrada com a atendente e não saiu no prejú',
             "descricao": "Parabéns, você venceu! Como forma de desculpa pelo caixa louco, a casa do Pão de queijo te deu o ataque do café quente, use sabiamente",
             "opcoes": {
                 "inicio": "voltar para o saguão de entrada",
             }
         },
-		'O grande elevador':{
+		'o grande elevador':{
 			'titulo': 'Vai num flash',
-			'Descrição': 'O jeito mais rápido de se percorrer o espaço tempo, de forma quase segura',
+			'descricao': 'O jeito mais rápido de se percorrer o espaço tempo, de forma quase segura',
 			'opcoes':{
 				'responder a pergunta':'teleporte-se para onde quiser',
-				'voltar ao saguão': 'Estas a perder uma grande oportunidade'	
+				'inicio': 'Estas a perder uma grande oportunidade'	
 					}
 				},
         'tecnico da fresadora': {
@@ -156,8 +167,9 @@ def main():
 		
 		
         if nome_cenario_atual == "atacar caixa":
-            print('Você saiu na porrada com a atendente e não saiu no prejú')
+            print()
             itens.append("ataque do café quente")
+<<<<<<< HEAD
         if nome_cenario_atual == "tecnico da fresadora":
             print()
             print("Você escolheu probreamente, já que o técnico era na verdade um vilão que te matou com a fresadora")
@@ -193,6 +205,8 @@ def main():
                   if nome_cenario_atual != "inicio" or "Prédio novo" or "Fab lab" or 'casa do pao de queijo' or 'Segundo andar' or 'sala do professor': 
                       print('Você se teleportou para um lugar que não existe nessa dimensão e se perdeu no espaço tempo, parabéns pela burrice!!!') 
                       game_over=True
+=======
+>>>>>>> 989782ce9458e44a35b5b56397622fefa4256ae6
 					   
         for titulo,sala in cenario_atual.items():
             if titulo == 'titulo':
@@ -218,10 +232,17 @@ def main():
             for cenario, descricao in opcoes.items():
                 print('{0}: {1}'. format(cenario, descricao))
             escolha = input("o que você quer fazer?")
-            if escolha in opcoes:
+            if escolha == 'responder a pergunta':
+               nome_cenario_atual=input('Escolha qualquer lugar do mundo ')
+               if nome_cenario_atual in cenarios:
+                  nome_cenario_atual=nome_cenario_atual
+               else:
+                  print("SE FERRO, isso que você escreveu não existe nesse mundo, você se perdeu para sempre")
+                  game_over=True
+            elif escolha in opcoes:
                 nome_cenario_atual = escolha
             else:
-                print("Demoro, se FERRO, não foi dessa vez irmão")
+                print("SE FERRO, esse lugar não existe nesse mundo, você se perdeu para sempre")
                 game_over=True
                 
 
