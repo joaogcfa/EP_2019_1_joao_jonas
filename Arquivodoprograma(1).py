@@ -136,7 +136,14 @@ def carregar_cenarios():
             "opcoes": {
                 "predio novo":"Voltar para o hall do prédio novo",
             }
-        },    
+        },
+        'assuste o professor': {
+			'titulo':'O monstro está aqui',
+			'descricao':'faça alguma coisa, ou vai arregar?',
+			'opcoes':{'segundo andar':'Arregue agora',
+			          'assuste o professor':'faça uma bricadeirinha sadia com ele',
+					  'va falar com o professor':'agora é a hora da verdade'}
+			   },
 	}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
